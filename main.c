@@ -1,30 +1,41 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <math.h>
+
+const float pi = 3.14;
 
 int main(){
-  int r = 0, t = 0;
-  char i[50];
-  char c[100];
-  int size = 0;
-  printf("Введите название фигуры");
-  for(r = 0; r < 99; r++){
-    scanf("%c", &c[r]);
-    if (c[r] == 59 )  break;
-  }
-  for(r = 0; r < 49; r++){
-    if (c[r] == 40 ){
-      i[r] = "/0";
-      break;
-    }
-    size++;
-    i[r] = c[r];
-  }
-  for(r = 0; r < size; r++){
-    printf("%c", i[r]);
-
-  }
-
+	int number;
+	float a, b, c, r, o, perimeter, area, halfper;
+	printf("Enter Shape Number: \n1 - circle, 2 - triangle \n");
+	scanf("%d", &number);
+	
+	switch(number){
+		
+		case 1:
+			printf("Enter the origin point: \n");
+			scanf("%f", &o);
+			printf("Enter the radius of the circle: \n");
+			scanf("%f", &r);
+			area = pi * r * r;
+			perimeter = 2 * pi * r;
+			printf("Area of the circle: %.2f \nPerimeter of the circle: %.2f \n", area, perimeter);
+			break;
+			
+		case 2:
+			printf("Enter the sides of the triangle: \n");
+			scanf("%f %f %f", &a, &b, &c);
+			if (a + b > c || a + c > b || b + c > a){
+				perimeter = a + b + c;
+				halfper = perimeter/2;
+				area = sqrt(halfper * (halfper - a) * (halfper - b) * (halfper - c));
+				printf("Area of the triangle: %.2f \nPerimeter of the triangle: %.2f \n", area, perimeter);
+				break;
+			}
+		else{
+			printf("Incorrect!");
+		}
+	}
+	
+	return 0;
+	
 }
-    
-  
-  
